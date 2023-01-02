@@ -1,10 +1,14 @@
 const express = require("express");
+const path = require("path");
 const app = express();
-const router = require("./routes");
-const log = require("./middlewares/logger");
+const ProductRouter = require("./app/product/routes");
+const logger = require("morgan");
 
-app.use(log);
-app.use(router);
+app.use(logger("dev"));
+app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());   JSON
+app.use("/public", express.static(path.join(__dirname, "uploads"))); //static
+app.use("/api/v1", ProductRouter);
 app.use((req, res, next) => {
   //404 error
   res.status(404);
