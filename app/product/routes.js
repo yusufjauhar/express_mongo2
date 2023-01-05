@@ -9,11 +9,8 @@ router.get("/product/:id", ProductController.view);
 
 router.post("/product/", upload.single("image"), ProductController.store);
 
-// router.get("/:category/:tag", (req, res) => {
-//   const { category, tag } = req.params;
-//   res.send({ category, tag });
-// });
+router.put("/product/:id", upload.single("image"), ProductController.update);
 
-// app.post("/cover", upload.single("image"), function (req, res, next) {});
+router.delete("/product/:id", upload.single("image"), ProductController.destroy);
 
 module.exports = router;
