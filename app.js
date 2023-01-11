@@ -13,6 +13,7 @@ app.use("/public", express.static(path.join(__dirname, "uploads"))); //static
 app.use("/api/v1", ProductRouter);
 app.use("/api/v2", ProductRouterV2);
 
+
 app.use((req, res, next) => {
   //404 error
   res.status(404);
